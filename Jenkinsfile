@@ -8,10 +8,5 @@ pipeline {
                
             }
         }
-        stage('artifact') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
     }
 }
