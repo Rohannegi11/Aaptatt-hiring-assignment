@@ -1,9 +1,17 @@
 
-FROM ubuntu:latest
-RUN apt-get update && \
-    apt-get install -y openjdk-8-jdk maven git && \
-    apt-get clean
-COPY . .
-WORKDIR /app
+FROM ubuntu
+RUN apt update -y
+RUN apt install openjdk-11-jdk -y
+RUN  apt install git -y
+COPY  apache-maven-3.9.6-bin.tar.gz /tmp
+WORKDIR /tmp
+RUN tar -xvzf apache-maven-3.9.6-bin.tar.gz
+ENV MAVEN_HOME=/tmp/apache-maven-3.9.6/
+ENV PATH=/tmp/apache-maven-3.9.6/bin/:$PATH
 RUN mvn clean package
-ENTRYPOINT ["java", "-jar", "app.jar"]
+RUN git clone -b master https://github.com/Rohannegi11/Aaptatt-hiring-assignment.git
+ENTRYPOINT ["java", "-jar", "tmp.jar"]
+
+
+
+
