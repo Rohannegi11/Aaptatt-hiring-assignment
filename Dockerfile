@@ -5,4 +5,4 @@ FROM tomcat:9-jdk11 AS runtime
 COPY target/sparkjava-hello-world-1.0.war /usr/local/tomcat/webapps/
 
 # Expose the port the application runs on
-EXPOSE 8080
+EXPOSE 8081
